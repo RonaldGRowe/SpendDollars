@@ -4,49 +4,16 @@
     ViewData["Title"] = "Home page";
 }
 
-<h1>How Would You Spend &#36 100 a Day?</h1>
+<h1>How Would You Spend &#36;100 a Day?</h1>
 <p>Basic needs are taken care of. This is to spend on you! You have to spend it all.</p>
 
 <form class="">
-    <div class="form-row">
-        <label class="col-md-1">Eat Out</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
-    <div class="form-row">
-        <label class="col-md-1">Vacation</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
-    <div class="form-row">
-        <label class="col-md-1">Entertainment</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
-    <div class="form-row">
-        <label class="col-md-1">Shopping</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
-    <div class="form-row">
-        <label class="col-md-1">Party</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-        </div>
-    <div class="form-row">
-        <label class="col-md-1">Donate</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
-    <div class="form-row">
-        <label class="col-md-1">Education</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
-    <div class="form-row">
-        <label class="col-md-1">Spa</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
-    <div class="form-row">
-        <label class="col-md-1">Hobby</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
-    <div class="form-row">
-        <label class="col-md-1">No Comment</label>
-        <input type="number" min=0 max=100 class="col-md-1">
-    </div>
+    @foreach(var topic in IndexModel.topics)
+        {
+            <div class="form-row">
+                <label class="col-md-1">@topic</label>
+                <input type="number" min="0" max="100" step=".01" class="col-md-1">
+            </div>
+        }
     <button class="alert alert-primary">Submit</button>
 </form>
