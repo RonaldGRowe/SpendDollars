@@ -7,13 +7,16 @@
 <h1>How Would You Spend &#36;100 a Day?</h1>
 <p>Basic needs are taken care of. This is to spend on you! You have to spend it all.</p>
 
-<form class="">
+<form method="post">
     @foreach(var topic in IndexModel.topics)
         {
-            <div class="form-row">
+        string aspname = "Money." + @topic;
+        <div class="form-row">
                 <label class="col-md-1">@topic</label>
-                <input type="number" min="0" max="100" step=".01" class="col-md-1">
+                <input type="number" min="0" max="100" step=".01" class="col-md-1" name="@aspname" id="@aspname"  asp-for="@aspname">
             </div>
         }
+        <label class="col-md-1">Bonus</label>
+        <input type="number" min="0" max="100" step=".01" class="col-md-1"  asp-for="Money.Bonus">
     <button class="alert alert-primary">Submit</button>
 </form>
