@@ -6,7 +6,7 @@ namespace SpendDollars.Pages
     public class IndexModel : PageModel
     {
         public static readonly string[] topics = {"Vacation", "Entertainment", 
-            "Education", "Donate", "Spa", "Party", "Hobby", "Shopping", "EatconeOut", "Personal"};
+            "Education", "Donate", "Spa", "Party", "Hobby", "Shopping", "EatOut", "Personal"};
 
         [BindProperty]
         public MoneySpent Money { get; set; }
@@ -23,6 +23,7 @@ namespace SpendDollars.Pages
             {
                 return Page();
             }
+            
             return RedirectToPage("/Index");
         }
 
