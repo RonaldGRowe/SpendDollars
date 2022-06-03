@@ -25,6 +25,5 @@ namespace SpendDollars.Models
         public decimal Hobby { get; set; }
         [DataType(DataType.Currency)]
         public decimal Personal { get; set; }
-        public decimal Bonus { get; set; }    
     }
 }

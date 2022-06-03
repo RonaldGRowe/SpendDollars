@@ -24,7 +24,7 @@ namespace SpendDollars.Pages
                 return Page();
             }
             
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Graph");
         }
 
     }
