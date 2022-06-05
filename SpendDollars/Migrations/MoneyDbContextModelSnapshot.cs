@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SpendDollars.Models;
+using SpendDollars.Data;
 
 #nullable disable
 
@@ -54,7 +54,7 @@ namespace SpendDollars.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("SpentMoney");
+                    b.ToTable("MoneySpent");
                 });
 #pragma warning restore 612, 618
         }

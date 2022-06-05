@@ -1,7 +1,11 @@
+using SpendDollars.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<MoneyDbContext>();
 
 var app = builder.Build();
 

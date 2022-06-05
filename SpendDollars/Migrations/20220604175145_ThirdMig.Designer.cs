@@ -4,15 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpendDollars.Data;
-using SpendDollars.Models;
 
 #nullable disable
 
 namespace SpendDollars.Migrations
 {
     [DbContext(typeof(MoneyDbContext))]
-    [Migration("20220511164449_initial")]
-    partial class initial
+    [Migration("20220604175145_ThirdMig")]
+    partial class ThirdMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +56,7 @@ namespace SpendDollars.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("SpentMoney");
+                    b.ToTable("MoneySpent");
                 });
 #pragma warning restore 612, 618
         }
