@@ -13,6 +13,13 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+header {
+    background-color: #CBD18F;
 }
+body {
+    margin-bottom: 60px;
+    background-color: #3A6B35;
+}
+body {
+     color: #E3B448;
+ }
