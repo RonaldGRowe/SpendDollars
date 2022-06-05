@@ -1,27 +1,27 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Form";
 }
 
 <div class="row">
-    <h1 class="text-center h1">How Would You Spend &#36;100 a Day?</h1>
-    <p class="text-center fs-5">Basic needs are taken care of. This is to spend on you! You have to spend it all.</p>
+    <h1 class="text-center h2">How Would You Spend &#36;100 a Day?</h1>
+    <p class="text-center fs-5 text-black">Basic needs are taken care of. This is to spend on you! You have to spend it all.</p>
 </div>
 <form method="post" class="container">
     @foreach(var topic in IndexModel.topics)
         {
         string aspname = "MoneySpent." + @topic;
         <div class="row justify-content-center align-items-center">
-                <div class="col-4  col-sm-3 col-md-2 p-1">
-                    <label class="form-label  fs-4 fw-bold">@topic</label>
+                <div class="col-4  col-sm-3 col-lg-2 p-1">
+                    <label class="form-label  fs-5 fw-bold">@topic</label>
                 </div>
                 <div class="col-3 col-sm-2 col-lg-1 p-1">
                     <div class="d-inline-flex align-items-baseline">
                    <p class="fs-4">&#36;</p> <input type="number" min="0" max="100" step=".01" class="form-control " name="@aspname" id="@aspname"  asp-for="@aspname" value="0">
                    </div>
                 </div>
-                <div class="col-3 col-sm-2 col-xl-1 p-1 align-content-center ">
+                <div class="col-4 col-sm-3 col-lg-2 p-1 align-content-center ">
                     <p class=" fs-4">* 365 = &#36?</p>
                 </div>
         </div>
@@ -30,27 +30,24 @@
         }
         <div class="row justify-content-center align-items-center">
             <div class="col-4  col-sm-3 col-md-2 p-1">
-                    <label class="form-label">Total</label>
+                    <label class="form-label fs-4">Total</label>
             </div>
             <div class="col-3 col-sm-2 col-lg-1 p-1">
                  <div class="d-inline-flex align-items-baseline">
-                   <p class="">&#36;?</p>
+                   <p class="fs-4">&#36;?</p>
                  </div>
             </div>
-            <div class="col-3 col-sm-2 col-xl-1 p-1 align-content-center ">
-                 <p class="">* 365 = &#36?</p>
+            <div class="col-4 col-sm-3 col-lg-2 p-1 align-content-center ">
+                 <p class="fs-4">* 365 = &#36?</p>
             </div>
             
 
         </div>
 <br />
-    @{
-        var eatout = "100";
-        <text>@eatout</text>
-    }
+    
     <div class="row justify-content-center">
     <div class="col-2 text-center">
-        <button class="btn btn-lg btn-primary" >Submit</button>
+        <button class="btn btn-lg btn-dark" >Submit</button>
     </div>
 </div>
 </form>
