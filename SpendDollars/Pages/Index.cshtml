@@ -6,12 +6,13 @@
 
 <div class="row">
     <h1 class="text-center h2">How Would You Spend &#36;100 a Day?</h1>
-    <p class="text-center fs-5 text-black">Basic needs are taken care of. This is to spend on you! You have to spend it all.</p>
+    <p class="text-center fs-5 text-black">Basic needs are taken care of. This is to spend on you! You have to allocate it all.</p>
 </div>
 <form method="post" class="container">
     @foreach(var topic in IndexModel.topics)
         {
         string aspname = "MoneySpent." + @topic;
+        string topictotal = @topic + "Total";
         <div class="row justify-content-center align-items-center">
                 <div class="col-4  col-sm-3 col-lg-2 p-1">
                     <label class="form-label  fs-5 fw-bold">@topic</label>
@@ -22,7 +23,7 @@
                    </div>
                 </div>
                 <div class="col-4 col-sm-3 col-lg-2 p-1 align-content-center ">
-                    <p class=" fs-4">* 365 = &#36?</p>
+                    <p class=" fs-4">* 365 = &#36;<span id="@topictotal"></span></p>
                 </div>
         </div>
         
@@ -34,11 +35,11 @@
             </div>
             <div class="col-3 col-sm-2 col-lg-1 p-1">
                  <div class="d-inline-flex align-items-baseline">
-                   <p class="fs-4">&#36;?</p>
+                   <p  class="fs-4">&#36;<span id="dayTotal"></span></p>
                  </div>
             </div>
             <div class="col-4 col-sm-3 col-lg-2 p-1 align-content-center ">
-                 <p class="fs-4">* 365 = &#36?</p>
+                 <p class="fs-4">* 365 = &#36<span id="yearTotal"></span></p>
             </div>
             
 
@@ -47,20 +48,66 @@
     
     <div class="row justify-content-center">
     <div class="col-2 text-center">
-        <button class="btn btn-lg btn-dark" >Submit</button>
+        <button class="btn btn-lg btn-dark" id="submit" disabled>Submit</button>
     </div>
 </div>
 </form>
 <script>
     const numInputs = document.querySelectorAll('input[type=number]')
+    
+    numInputs.forEach(function(input) {
+        input.addEventListener('change', function(e) {
+            if (e.target.value == '') {
+                e.target.value = 0
+            }            
+        })
+    })
 
-numInputs.forEach(function(input) {
-  input.addEventListener('change', function(e) {
-    if (e.target.value == '') {
-      e.target.value = 0
+    const inputId = ["Vacation", "Entertainment","Education", "Donate", "Spa", "Party", "Hobby", "Shopping", "EatOut", "Personal"];
+    var total;
+
+    inputId.forEach(function(input){
+        var itemTotal = 0;
+        var model = "MoneySpent.".concat(input);
+        var topictotal = input.concat("Total")
+        newInput = document.getElementById(model);
+        if (newInput) { 
+            newInput.addEventListener('change', function(e) {                
+                var value = parseInt(document.getElementById(model).value);
+                console.log(value, total);
+                if (!total) { total = 0; }
+                if (value + total <= 100) {
+                    itemTotal = value * 365;                
+                } else {
+                    value = 100 - total;
+                    document.getElementById(model).value = value;
+                    itemTotal = value * 365;                                        
+                }
+                total = 0;
+                getTotal();
+                document.getElementById(topictotal).innerHTML = itemTotal;
+            })
+        }
+    })
+
+    function getTotal() {
+        for (const input of numInputs) {
+            total += parseInt(input.value);
+        } 
+        document.getElementById("dayTotal").innerHTML = total;
+        document.getElementById("yearTotal").innerHTML = total*365;
+        enableButton();
     }
-  })
-})
 
+    function enableButton() {
+        let btn = document.getElementById("submit");
+        if (total == 100) {
+            console.log(true);
+            btn.disabled = false;
+        } else {
+            btn.disabled = true;
+        }
+    }
+    
 
 </script>
