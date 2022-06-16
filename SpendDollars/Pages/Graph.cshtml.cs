@@ -20,7 +20,6 @@ namespace SpendDollars.Pages
 
 
         public int? DBCount { get; set; }
-        public decimal DonateAvg { get; set; }
         public async Task OnGetAsync()
         {            
            DBCount = await _context.MoneySpent.CountAsync();
