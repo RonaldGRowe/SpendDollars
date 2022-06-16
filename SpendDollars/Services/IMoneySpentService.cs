@@ -2,8 +2,8 @@
 {
     public interface IMoneySpentService
     {
-        Dictionary<string, decimal> GetAverage();
-        Dictionary<string, decimal> GetLatest();
+        Dictionary<string, int> GetLatest();
+        Dictionary<string, int> GetAverage();
 
     }
 }

@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
 using SpendDollars.Data;
+using SpendDollars.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<MoneyDbContext>();
+
+builder.Services.AddSingleton<MoneySpentService>();
 
 var app = builder.Build();
 
@@ -26,4 +30,12 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.MapGet("/api/moneyspent", (IMoneySpentService service) =>
+{
+    return Results.Ok(service.GetAverage());
+});
+app.MapGet("/api/moneyspent/latest", (IMoneySpentService service) =>
+{
+    return Results.Ok(service.GetLatest());
+});
 app.Run();

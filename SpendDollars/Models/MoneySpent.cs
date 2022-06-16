@@ -8,55 +8,35 @@ namespace SpendDollars.Models
        
         public int ID { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal EatOut { get; set; }
+        public int EatOut { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Vacation { get; set; }
+        public int Vacation { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Entertainment { get; set; }
+        public int Entertainment { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Education { get; set; }
+        public int Education { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Shopping { get; set; }
+        public int Shopping { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Party { get; set; }
+        public int Party { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Donate { get; set; }
+        public int Donate { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Spa { get; set; }
+        public int Spa { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Hobby { get; set; }
+        public int Hobby { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Range(0, 100)]
         [AllowNull]
-        public decimal Personal { get; set; }
+        public int Personal { get; set; }
 
         
     }
