@@ -76,6 +76,7 @@
                 var value = parseInt(document.getElementById(model).value);
                 console.log(value, total);
                 if (!total) { total = 0; }
+                if (value < 0) { value = 0; document.getElementById(model).value = 0;}
                 if (value + total <= 100) {
                     itemTotal = value * 365;                
                 } else {

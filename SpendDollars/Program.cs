@@ -30,11 +30,11 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.MapGet("/api/moneyspent", (IMoneySpentService service) =>
+app.MapGet("/api/moneyspent", ([FromServices] MoneySpentService service) =>
 {
     return Results.Ok(service.GetAverage());
 });
-app.MapGet("/api/moneyspent/latest", (IMoneySpentService service) =>
+app.MapGet("/api/moneyspent/latest", ([FromServices]  MoneySpentService service) =>
 {
     return Results.Ok(service.GetLatest());
 });

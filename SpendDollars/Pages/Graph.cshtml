@@ -5,33 +5,43 @@
     ViewData["Title"] = "Graph";   
 }
 
+
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
     <script type="text/javascript">
+
+
+        
+   
+
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+          var average = [['Investment', 'Amount']];
+        fetch("/api/moneyspent")
+              .then((response) => {
+                  return response.json();
+              })
+              .then((info) => {
+                  averages = info;
+                  for (var i in info) {
+                      average.push([i, info[i]]);
+                  }
+                  
+              })
+          
 
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Investment');
-          data.addColumn('number', 'Amount');
+          var data = new google.visualization.arrayToDataTable(average);
 
-
-          data.addRows([
-              ['Donate', 15],
-              ['Eat Out', 25],
-              ['Entertainment', 30],
-              ['Education', 0],
-              ['Vacation', 3],
-              ['Shopping', 6],
-              ['Party', 4],
-              ['Spa', 9],
-              ['Personal', 10],
-              ['Hobby', 11]
-          ]);
-
-        var options = {
-          title: 'My Daily Activities'
+        
+       
+          
+          var options = {
+          title: 'My Daily Activities',
+          backgroundColor: '#3A6B35'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -39,16 +49,16 @@
         chart.draw(data, options);
       }
     </script>
-
+    
 
 <h1 class="h1">How Did We Spend &#36;100 a Day?</h1>
 
-<div id="piechart" style="width: 100%; height: 500px;"></div>
+<div id="piechart" class="green" style=" width: 100%; height: 500px;"></div>
 
 @if(Model.DBCount != null)
 {
     
-    <p>The Total Number of Entries is @Model.DBCount</p>
+    <p class="text-center">The Total Number of Entries is @Model.DBCount</p>
 }
 else
     {

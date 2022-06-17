@@ -11,7 +11,7 @@ namespace SpendDollars.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite(@"Data Source=C:\Users\Ron\source\repos\SpendDollars\SpendDollars\MoneySpent.db");
+            options.UseSqlite("Data Source=MoneySpent.db");
         }
     }
 }
