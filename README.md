@@ -1,3 +1,5 @@
+[SpendDollarsImages](https://github.com/RonaldGRowe/SpendDollars/blob/master/Images/moneyspent1.png)
+
 # SpendDollars
 Razor webpage to store how you would spend 100$ a day only on yourself. 
 Will contain pie chart of averages.
