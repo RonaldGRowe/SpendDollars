@@ -20,40 +20,40 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-          var average = [['Investment', 'Amount']];
-        fetch("/api/moneyspent")
+          var average = [];
+        
+          var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Investment');
+              data.addColumn('number', 'Amount');
+                data.addRows(10);
+          fetch("/api/moneyspent")
               .then((response) => {
                   return response.json();
               })
               .then((info) => {
-                  averages = info;
                   for (var i in info) {
                       average.push([i, info[i]]);
                   }
-                  
-              })
+                  data.addRows(average);
+                  chart.draw(data, options);
+              });
           
 
-          var data = new google.visualization.arrayToDataTable(average);
-
-        
-       
-          
           var options = {
-          title: 'My Daily Activities',
+          title: 'How We Spent $100',
           backgroundColor: '#3A6B35'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        chart.draw(data, options);
+          chart.draw(data, options);
       }
     </script>
     
 
-<h1 class="h1">How Did We Spend &#36;100 a Day?</h1>
+<h1 class="h1 text-center">How Did We Spend &#36;100 a Day?</h1>
 
-<div id="piechart" class="green" style=" width: 100%; height: 500px;"></div>
+<div id="piechart" class="align-content-center" style=" width: 100%; height: 500px;"></div>
 
 @if(Model.DBCount != null)
 {
@@ -62,6 +62,6 @@
 }
 else
     {
-        <h2>Need Data, Please Return and Fill Out Form</h2>
+        <h2 class="text-center">Need Data, Please Return and Fill Out Form</h2>
     }
 
