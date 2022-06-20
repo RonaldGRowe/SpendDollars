@@ -10,8 +10,7 @@ namespace SpendDollars.Data
         public DbSet<MoneySpent> MoneySpent { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseSqlite("Data Source=MoneySpent.db");
+        {            
         }
     }
 }

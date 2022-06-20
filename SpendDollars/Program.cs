@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SpendDollars.Data;
 using SpendDollars.Services;
 
@@ -7,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<MoneyDbContext>();
+builder.Services.AddDbContext<MoneyDbContext>(options =>
+  options.UseSqlite(builder.Configuration.GetConnectionString("MoneyDbContext")));
 
 builder.Services.AddSingleton<MoneySpentService>();
 
