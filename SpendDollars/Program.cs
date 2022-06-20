@@ -5,6 +5,9 @@ using SpendDollars.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
@@ -31,6 +34,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+//for initial publishing to create db
+//using (var scope = app.Services.CreateScope())
+//{
+//    var db = scope.ServiceProvider.GetRequiredService<MoneyDbContext>();
+//    db.Database.Migrate();
+//}
 
 app.MapGet("/api/moneyspent", ([FromServices] MoneySpentService service) =>
 {
