@@ -9,8 +9,9 @@ namespace SpendDollars.Data
     {
         public DbSet<MoneySpent> MoneySpent { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {            
+        public MoneyDbContext(DbContextOptions<MoneyDbContext> options)
+            : base(options)
+        {
         }
     }
 }
