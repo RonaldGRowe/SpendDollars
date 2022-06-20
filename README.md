@@ -1,6 +1,6 @@
 ![SpendDollarsImages](https://github.com/RonaldGRowe/SpendDollars/blob/master/Images/moneyspent1.png)
 
-Try it out [Live](https://moneyspent.azurewebsites.net/).
+# Try it out [Live](https://moneyspent.azurewebsites.net/).
 
 # SpendDollars
 Razor webpage to store how you would spend 100$ a day only on yourself. 
