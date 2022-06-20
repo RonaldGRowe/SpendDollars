@@ -76,16 +76,19 @@
                 var value = parseInt(document.getElementById(model).value);
                 console.log(value, total);
                 if (!total) { total = 0; }
+                total = 0;
+                getTotal();
                 if (value < 0) { value = 0; document.getElementById(model).value = 0;}
-                if (value + total <= 100) {
+                if (total <= 100) {
                     itemTotal = value * 365;                
                 } else {
-                    value = 100 - total;
+                    value = value - (total-100);
                     document.getElementById(model).value = value;
                     itemTotal = value * 365;                                        
                 }
                 total = 0;
                 getTotal();
+                console.log(total);
                 document.getElementById(topictotal).innerHTML = itemTotal;
             })
         }
@@ -94,9 +97,14 @@
     function getTotal() {
         for (const input of numInputs) {
             total += parseInt(input.value);
-        } 
-        document.getElementById("dayTotal").innerHTML = total;
-        document.getElementById("yearTotal").innerHTML = total*365;
+        }
+        if (total > 100) {
+            document.getElementById("dayTotal").innerHTML = 100;
+            document.getElementById("yearTotal").innerHTML = 100*365;
+        }else {
+            document.getElementById("dayTotal").innerHTML = total;
+            document.getElementById("yearTotal").innerHTML = total*365;
+        }
         enableButton();
     }
 
